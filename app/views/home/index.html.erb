@@ -1,0 +1,11 @@
+<input type="text" id="new_item" ng-model="project_name"/>
+<button class="btn btn-success" ng-click="add_new_item()">新增</button>
+<p>1 + 2 = {{ phones.length }}</p>
+
+<div ng-repeat="i in phones" ng-click="change_project(i.id)">
+  <div pr_id="{{i.id}}">{{i.title}}</div>
+</div>
+
+<div ng-repeat="i in project_items" ng-click>
+  {{i}}
+</div>
