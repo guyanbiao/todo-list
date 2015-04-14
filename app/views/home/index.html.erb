@@ -1,11 +1,18 @@
-<input type="text" id="new_item" ng-model="project_name"/>
-<button class="btn btn-success" ng-click="add_new_item()">新增</button>
-<p>1 + 2 = {{ phones.length }}</p>
+<input type="text"  ng-model="project_name"/>
+<button class="btn btn-success" ng-click="add_project()">新增项目</button>
+<p>1 + 2 = {{ projects.length }}</p>
 
-<div ng-repeat="i in phones" ng-click="change_project(i.id)">
-  <div pr_id="{{i.id}}">{{i.title}}</div>
+<div ng-repeat="i in projects" ng-click="change_project(i.id)">
+  <div ng-class="{'selected': i.id == current_pr.id}" pr_id="{{i.id}}">{{i.title}}</div>
 </div>
 
-<div ng-repeat="i in project_items" ng-click>
-  {{i}}
+-------------------------
+<div>
+{{current_pr.title}}
+</div>
+<input type="text" ng-model="content"/>
+<button class="btn btn-success" ng-click="add_item()">新增条目</button>
+
+<div ng-repeat="i in project_items">
+  {{i.content}} <input type="checkbox" ng-checked="i.finished" ng-click="toggle_status(i.id)">
 </div>
