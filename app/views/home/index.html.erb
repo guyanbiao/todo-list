@@ -1,18 +1,50 @@
-<input type="text"  ng-model="project_name"/>
-<button class="btn btn-success" ng-click="add_project()">新增项目</button>
-<p>1 + 2 = {{ projects.length }}</p>
+<div class="row">
+  <div class="col-sm-4 projects">
+    <div class="row controls">
+      <div class="col-xs-8 project_title">
+        <span ng-show="projects.length == 0">没有项目</span>
+        <span>
+          {{current_pr.title}}
+        </span>
+      </div>
+      <div class="slide col-xs-4" ng-click="toggle_pr()">
+        <i class="menu_down fa fa-chevron-circle-down fa-2x"></i>
+        <i class="menu_left fa fa-chevron-circle-left fa-2x"></i>
+      </div>
+    </div>
+    <div class="projects_main" ng-class="{padding_more: current_angle == 0}">
+      <div class="add_project_group">
+        <input placeholder="项目名称" type="text"  ng-model="project_name"/>
+        <a class="" ng-click="add_project()">+ 创建</a>
+      </div>
+      <div ng-repeat="i in projects" ng-click="change_project(i.id, true)">
+        <div class="items" ng-class="{'selected': i.id == current_pr.id}" pr_id="{{i.id}}">{{i.title}}</div>
+      </div>
+    </div>
+  </div>
 
-<div ng-repeat="i in projects" ng-click="change_project(i.id)">
-  <div ng-class="{'selected': i.id == current_pr.id}" pr_id="{{i.id}}">{{i.title}}</div>
+  <div class="col-sm-8 details">
+    <div class="add_item_group">
+      <input type="text" ng-model="content" placeholder="任务"/>
+      <a class="" ng-click="add_item()">+ 添加</a>
+      <div class="icons_collect">
+        <div class="left_tasks">{{unf_count(project_items)}}</div>
+        <div ng-class="{open: f_open}" title="显示已完成的任务">
+          <i ng-click="show_finished()" class="fa fa-history fa-lg show_history"></i>
+        </div>
+        <div ng-click="rm_pr()" class="trash" title="删除当前项目">
+          <i class="fa fa-trash fa-lg"></i>
+        </div>
+      </div>
+    </div>
+
+
+    <div ng-repeat="i in filted = (project_items | unfinished:f_open)" class="tasks">
+      <span ng-class="{finished: i.finished}">{{i.content}}</span> <input type="checkbox" ng-checked="i.finished" ng-click="toggle_status(i.id)">
+    </div>
+    <div ng-show="project_items.length == 0" class="no_task">
+      点击“添加”来创建新任务
+    </div>
+  </div>
 </div>
 
--------------------------
-<div>
-{{current_pr.title}}
-</div>
-<input type="text" ng-model="content"/>
-<button class="btn btn-success" ng-click="add_item()">新增条目</button>
-
-<div ng-repeat="i in project_items">
-  {{i.content}} <input type="checkbox" ng-checked="i.finished" ng-click="toggle_status(i.id)">
-</div>

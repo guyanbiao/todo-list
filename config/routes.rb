@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   namespace :api do
     post "items/:item_id/toggle" => "items#toggle"
-    resources :projects, only: [:create, :index] do
+    resources :projects, only: [:create, :index, :destroy] do
       resources :items, only: [:index, :create]
     end
   end

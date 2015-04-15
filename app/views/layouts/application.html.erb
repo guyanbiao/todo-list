@@ -2,12 +2,20 @@
 <html ng-app="todo_list">
 <head>
   <title>TodoList</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= csrf_meta_tags %>
 </head>
+
 <body ng-controller="MainCtrl">
-<%= yield %>
+  <div class="container">
+    <div class="header">
+      <%= image_tag "logo", class: "logo" %>
+      <span class="slogan">To-do List Online</span>
+    </div>
+    <%= yield %>
+  </div>
 </body>
 </html>

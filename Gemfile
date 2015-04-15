@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'devise'
 gem 'mongoid', '~> 4.0.0'
 gem 'pry'
+gem 'font-awesome-rails' 
 
 group :development, :test do
   gem 'byebug'

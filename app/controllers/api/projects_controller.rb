@@ -13,4 +13,10 @@ class Api::ProjectsController < ApplicationController
       render json: {message: pr.errors.full_messages}, status: 400
     end
   end
+
+  def destroy
+    pr = Project.find params[:id]
+    pr.delete
+    render json: current_user.projects.map {|x| {id: x.id.to_s, title: x.title}}
+  end
 end
