@@ -28,7 +28,7 @@ class User
 
   def create_default_project
     #TODO 这个初始化放在哪里好呢
-    p = self.projects.create(title: "个人")
+    p = self.projects.create(title: "示例项目")
     p.items.create(content: "跟 sandy 看牙齿")
     p.items.create(content: "游泳", finished: true)
     p.items.create(content: "拿快递", finished: true)
