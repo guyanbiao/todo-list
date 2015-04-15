@@ -162,7 +162,7 @@ todo_list.controller('MainCtrl', ["$scope", "$http", function ($scope, $http) {
         $scope.projects = data;
         if (data.length > 0) {
           var pr_id = getCookie("selected_pr_id")
-          if (pr_id && pr_id.length > 0) 
+          if (data.filter(function(x) {return x.id == pr_id}).length > 0) 
             $scope.change_project(pr_id);
           else
             $scope.change_project(data[0].id);
