@@ -1,3 +1,4 @@
+//= require lib/angular
 
 $.fn.rotate = function(degrees, step, current) {
   var self = $(this);
