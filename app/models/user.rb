@@ -7,6 +7,7 @@ class User
 
 
   has_many :projects
+  after_create :create_default_project
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -25,14 +26,11 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  ## Confirmable
-  # field :confirmation_token,   type: String
-  # field :confirmed_at,         type: Time
-  # field :confirmation_sent_at, type: Time
-  # field :unconfirmed_email,    type: String # Only if using reconfirmable
-
-  ## Lockable
-  # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
-  # field :locked_at,       type: Time
+  def create_default_project
+    #TODO 这个初始化放在哪里好呢
+    p = self.projects.create(title: "个人")
+    p.items.create(content: "跟 sandy 看牙齿")
+    p.items.create(content: "游泳", finished: true)
+    p.items.create(content: "拿快递", finished: true)
+  end
 end

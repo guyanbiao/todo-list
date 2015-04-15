@@ -14,6 +14,9 @@
     <div class="header">
       <%= image_tag "logo", class: "logo" %>
       <span class="slogan">To-do List Online</span>
+      <% if user_signed_in? %>
+        <%= link_to "注销用户", destroy_user_session_path, method: "delete", class: "logout" %>
+      <% end %>
     </div>
     <%= yield %>
   </div>

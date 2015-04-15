@@ -152,7 +152,7 @@ todo_list.controller('MainCtrl', ["$scope", "$http", function ($scope, $http) {
       $scope.project_items = data;
     });
   }
-  function load_data() {
+  function init() {
     var angle = getCookie("angle");
     if (angle == "90") {
       $scope.toggle_pr(1);
@@ -169,6 +169,6 @@ todo_list.controller('MainCtrl', ["$scope", "$http", function ($scope, $http) {
         }
       })}
 
-  load_data();
+  init();
 }]);
 

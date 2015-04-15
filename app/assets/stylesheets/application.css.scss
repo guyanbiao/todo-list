@@ -5,10 +5,15 @@
 $primary-color: #CA0000;
 
 input {
+}
+
+input[type=text], input[type=email], input[type=password]{
+  width: 80%;
   border: 1px solid;
   border-radius: 3px;
   padding: 3px;
 }
+
 a {
   color: $primary-color;
   &:hover {
@@ -106,4 +111,7 @@ $circle: 20px;
 }
 .trash {
   margin-top: 30px !important;;
+}
+.logout {
+  float: right;
 }
